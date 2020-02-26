@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity"
+    android:background="@drawable/grad_bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/profileLogo"
+            android:layout_width="match_parent"
+            android:layout_height="125dp"
+            android:src="@drawable/blooddrop"
+            android:layout_marginTop="35dp"/>
+
+        <View
+            android:id="@+id/viewProfile"
+            android:layout_below="@id/profileLogo"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:background="@drawable/view_grad_bg"/>
+
+        <LinearLayout
+            android:layout_marginTop="35dp"
+            android:id="@+id/linNameProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/viewProfile"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Name:-"
+                android:textSize="25sp"
+                android:fontFamily="@font/chewy"/>
+
+            <TextView
+                android:id="@+id/profileNameTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Your Name Here."
+                android:textSize="20sp"
+                android:fontFamily="@font/chewy"
+                android:paddingLeft="15dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:id="@+id/linEmailProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/linNameProfile"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="E-mail:-"
+                android:textSize="25sp"
+                android:fontFamily="@font/chewy"/>
+
+            <TextView
+                android:id="@+id/profileEmailTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Your E-mail Here."
+                android:textSize="20sp"
+                android:fontFamily="@font/chewy"
+                android:paddingLeft="15dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:id="@+id/linContactProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/linEmailProfile"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Phone:-"
+                android:textSize="25sp"
+                android:fontFamily="@font/chewy"/>
+
+            <TextView
+                android:id="@+id/profilePhoneTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Your Contact Here."
+                android:textSize="20sp"
+                android:fontFamily="@font/chewy"
+                android:paddingLeft="15dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:id="@+id/linBloodProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/linContactProfile"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Blood Group:-"
+                android:textSize="25sp"
+                android:fontFamily="@font/chewy"/>
+
+            <TextView
+                android:id="@+id/profileBloodTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Your Blood Group Here."
+                android:textSize="20sp"
+                android:fontFamily="@font/chewy"
+                android:paddingLeft="15dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:id="@+id/linDOBProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/linBloodProfile"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Date Of Birth:-"
+                android:textSize="25sp"
+                android:fontFamily="@font/chewy"/>
+
+            <TextView
+                android:id="@+id/profileDobTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Your DOB Here."
+                android:textSize="20sp"
+                android:fontFamily="@font/chewy"
+                android:paddingLeft="15dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:id="@+id/linGenderProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/linDOBProfile"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Gender:-"
+                android:textSize="25sp"
+                android:fontFamily="@font/chewy"/>
+
+            <TextView
+                android:id="@+id/profileGenderTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Your Gender Here."
+                android:textSize="20sp"
+                android:fontFamily="@font/chewy"
+                android:paddingLeft="15dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:id="@+id/linCityProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/linContactProfile"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="City:-"
+                android:textSize="25sp"
+                android:fontFamily="@font/chewy"/>
+
+            <TextView
+                android:id="@+id/profileCityTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Your City Here."
+                android:textSize="20sp"
+                android:fontFamily="@font/chewy"
+                android:paddingLeft="15dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:id="@+id/linAddressProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/linCityProfile"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Address:-"
+                android:textSize="25sp"
+                android:fontFamily="@font/chewy"/>
+
+            <TextView
+                android:id="@+id/profileAddressTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Your Address Here."
+                android:textSize="20sp"
+                android:fontFamily="@font/chewy"
+                android:paddingLeft="15dp"/>
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:id="@+id/editInfoBtn"
+            android:background="@drawable/button_bg"
+            android:layout_marginTop="50dp"
+            android:gravity="center"
+            android:text="Edit Detail's"
+            android:paddingRight="30dp"
+            android:paddingLeft="30dp"
+            android:textSize="25sp"
+            android:drawableLeft="@drawable/edit"
+            android:textColor="@color/white"
+            android:fontFamily="@font/chewy"
+            android:layout_gravity="center"
+            android:layout_marginBottom="15dp"/>
+
+    </LinearLayout>
+</ScrollView>

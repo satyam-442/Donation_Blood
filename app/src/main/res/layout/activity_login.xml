@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:background="@drawable/grad_bg"
+    android:animateLayoutChanges="true">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp">
+
+        <ImageView
+            android:layout_marginTop="15dp"
+            android:id="@+id/img_logo"
+            android:layout_width="match_parent"
+            android:layout_height="125dp"
+            android:src="@drawable/blooddrop"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"/>
+
+        <TextView
+            android:id="@+id/slogan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/img_logo"
+            android:text="Donate Blood, Spread Humanity"
+            android:gravity="center"
+            android:textSize="24sp"
+            android:textColor="@color/red"
+            android:fontFamily="@font/chewy"
+            android:layout_marginTop="25dp"
+            android:textStyle="bold"
+            android:visibility="gone"/>
+
+        <RelativeLayout
+            android:id="@+id/rellay1"
+            android:layout_below="@id/slogan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/red"
+                android:layout_marginTop="20dp"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/chewy"/>
+
+            <LinearLayout
+                android:id="@+id/linlay1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_login"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_marginTop="12dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Username:"
+                        android:textAllCaps="true"
+                        android:fontFamily="sans-serif-light"
+                        android:textSize="18sp"
+                        android:layout_marginStart="5dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/red"/>
+
+                    <EditText
+                        android:id="@+id/logEmail"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:textColor="@color/red"
+                        android:paddingLeft="15dp"
+                        android:inputType="textEmailAddress"
+                        android:paddingRight="15dp"
+                        android:background="@drawable/et_bg"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp">
+
+                    <TextView
+                        android:layout_marginTop="12dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Password:"
+                        android:textAllCaps="true"
+                        android:fontFamily="sans-serif-light"
+                        android:textSize="18sp"
+                        android:layout_marginStart="5dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/red"/>
+
+                    <EditText
+                        android:id="@+id/logPass"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:textColor="@color/red"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:background="@drawable/et_bg"
+                        android:inputType="textPassword"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:layout_below="@id/linlay1"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:id="@+id/loginBtn"
+                android:background="@drawable/button_bg"
+                android:layout_marginTop="50dp"
+                android:gravity="center"
+                android:text="GO!"
+                android:paddingRight="70dp"
+                android:paddingLeft="70dp"
+                android:textSize="25sp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/chewy"
+                android:layout_centerHorizontal="true"/>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rellay2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="8dp"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/regisBtnLink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Register Now!"
+            android:textAllCaps="true"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:fontFamily="@font/chewy"
+            android:textSize="19sp"
+            android:textColor="@color/white"
+            android:background="@drawable/button_bg"/>
+
+        <Button
+            android:id="@+id/forgetPassLink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recover Account"
+            android:textAllCaps="true"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:fontFamily="@font/chewy"
+            android:textSize="19sp"
+            android:textColor="@color/white"
+            android:background="@drawable/button_bg"
+            android:layout_alignParentRight="true"/>
+
+    </RelativeLayout>
+</RelativeLayout>

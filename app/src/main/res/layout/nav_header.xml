@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="220dp"
+    android:background="@drawable/grad_bg"
+    android:padding="15dp"
+    android:gravity="bottom">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:src="@drawable/blooddrop" />
+
+    <TextView
+        android:id="@+id/navProfileName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:text="Your Name Here"
+        android:textColorHint="@color/red"
+        android:gravity="center"
+        android:fontFamily="@font/chewy"
+        android:textSize="18dp"/>
+
+    <TextView
+        android:id="@+id/navProfileEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:text="Your email Here"
+        android:textColorHint="@color/red"
+        android:gravity="center"
+        android:fontFamily="@font/alegreya"
+        android:textSize="16dp"/>
+
+</LinearLayout>
