@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DonateActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/red"/>
+
+    <TextView
+        android:id="@+id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:fontFamily="@font/chewy"
+        android:text="Glad to see you here"
+        android:textColor="@color/red"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_margin="25dp"
+        android:padding="15dp"/>
+
+    <TextView
+        android:id="@+id/descrip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logo"
+        android:fontFamily="@font/alegreya"
+        android:text="There are several types of blood donation. Search for the places to go and do some good deeds"
+        android:textColor="@color/red"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        android:layout_marginStart="10dp"
+        android:gravity="fill"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/hospital"
+        android:layout_below="@id/descrip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="5dp"
+        app:cardBackgroundColor="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/hospitalTV"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="-Hospital"
+                android:textColor="@color/red"
+                android:textSize="20sp"
+                android:paddingStart="8dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/camp"
+        android:layout_below="@id/hospital"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="5dp"
+        app:cardBackgroundColor="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/campTV"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="-Blood Donation Camp"
+                android:textColor="@color/red"
+                android:textSize="20sp"
+                android:paddingStart="8dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/paid"
+        android:layout_below="@id/camp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="5dp"
+        app:cardBackgroundColor="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/paidTV"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="-Paid Donation"
+                android:textColor="@color/red"
+                android:textSize="20sp"
+                android:paddingStart="8dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

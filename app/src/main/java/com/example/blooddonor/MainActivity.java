@@ -214,4 +214,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             super.onBackPressed();
         }
     }
+
+    public void SendToDonor(View view) {
+        Intent donors = new Intent(this, DonorActivity.class);
+        startActivity(donors);
+    }
+
+    public void SendToDonate(View view) {
+        Intent donors = new Intent(this, DonateActivity.class);
+        startActivity(donors);
+    }
 }

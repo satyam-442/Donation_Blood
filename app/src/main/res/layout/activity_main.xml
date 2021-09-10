@@ -27,6 +27,88 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:textSize="35sp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:fontFamily="@font/chewy"
+                android:text="Want to go for?"
+                android:paddingRight="70dp"
+                android:paddingLeft="70dp"
+                android:textColor="@color/red"/>
+
+            <LinearLayout
+                android:paddingTop="75dp"
+                android:gravity="center"
+                android:clipToPadding="false"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="160dp"
+                    android:layout_height="200dp"
+                    android:layout_margin="10dp"
+                    app:cardCornerRadius="15dp"
+                    android:onClick="SendToDonate">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/apos"
+                            android:layout_width="130dp"
+                            android:layout_height="140dp"
+                            android:src="@drawable/blooddrop" />
+
+                        <TextView
+                            android:id="@+id/apostv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="Donate"
+                            android:textColor="@color/red"
+                            android:textSize="30sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="160dp"
+                    android:layout_height="200dp"
+                    android:layout_margin="10dp"
+                    android:onClick="SendToDonor"
+                    app:cardCornerRadius="15dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <ImageView
+                            android:id="@+id/anegative"
+                            android:layout_width="130dp"
+                            android:layout_height="140dp"
+                            android:src="@drawable/blooddrop"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:layout_marginTop="10dp"
+                            android:text="Request"
+                            android:textColor="@color/red"
+                            android:textSize="30sp"/>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
         </FrameLayout>
     </LinearLayout>
 
