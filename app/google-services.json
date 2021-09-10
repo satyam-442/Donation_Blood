@@ -8,18 +8,18 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1063205863323:android:d14324ba982814664b6b3e",
+        "mobilesdk_app_id": "1:1063205863323:android:5afa3108a6697fee4b6b3e",
         "android_client_info": {
           "package_name": "com.example.blooddonor"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1063205863323-3mr9872qlsvlh5f1t2dmcnqqicmrg389.apps.googleusercontent.com",
+          "client_id": "1063205863323-s28u1oi47jlkqtk160aeqtj5tb33c8s4.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.blooddonor",
-            "certificate_hash": "94aca601513035e6e19cdfd7d019e62637e74096"
+            "certificate_hash": "9fca0be02e60e1a25f31523115d19a200945684f"
           }
         },
         {
