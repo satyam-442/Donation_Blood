@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -54,8 +55,6 @@ public class DonorActivity extends AppCompatActivity
         getSupportActionBar().setTitle("Donor");
         toolbar.setTitleTextColor(Color.parseColor("#ffffff"));
 
-        searchView = (MaterialSearchView) findViewById(R.id.search_view);
-
         //RECYCLER VIEW FOR QUERY UPDATE(OPEN)
 
         donorList = (RecyclerView) findViewById(R.id.all_donor_list);
@@ -85,7 +84,7 @@ public class DonorActivity extends AppCompatActivity
         FirebaseRecyclerAdapter<Donor, DonorsViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Donor, DonorsViewHolder>(options)
         {
             @Override
-            protected void onBindViewHolder(@NonNull DonorsViewHolder holder, final int position, @NonNull Donor model)
+            protected void onBindViewHolder(@NonNull DonorsViewHolder holder, @SuppressLint("RecyclerView") final int position, @NonNull Donor model)
             {
                 //final String PostKey = getRef(position).getKey();
 
@@ -172,7 +171,6 @@ public class DonorActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.search_menu,menu);
         MenuItem item = menu.findItem(R.id.action_search);
-        searchView.setMenuItem(item);
         return true;
     }
 

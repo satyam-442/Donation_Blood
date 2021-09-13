@@ -27,21 +27,19 @@ import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class DonorsProfile extends AppCompatActivity
-{
+public class SavedDonorsProfileActivity extends AppCompatActivity {
 
     private TextView donorName,  donorGroup, donorDob, donorGender, donorPhone, donorEmail, donorAddress;
     private CircleImageView donorProfile;
-    private Button requestByMail, saveDonor, requestByMessage, callDonor;
+    private Button requestByMail, requestByMessage, callDonor;
     private DatabaseReference donorsProfileRef, saveDonorRef;
     private FirebaseAuth mAuth;
     String currentUserId, senderUserId, recieverUserId, CURRENT_STATE, saveCurrentDate;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_donors_profile);
+        setContentView(R.layout.activity_saved_donors_profile);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -61,7 +59,6 @@ public class DonorsProfile extends AppCompatActivity
         donorProfile = (CircleImageView) findViewById(R.id.donorProfile_image);
 
         requestByMail = (Button) findViewById(R.id.requestByMail);
-        saveDonor = (Button) findViewById(R.id.saveDonor);
         callDonor = (Button) findViewById(R.id.callDonor);
         requestByMessage = (Button) findViewById(R.id.messageDonor);
 
@@ -93,8 +90,8 @@ public class DonorsProfile extends AppCompatActivity
                     final String image = dataSnapshot.child("image").getValue().toString();
                     if(!image.equals("default"))
                     {
-                        Picasso.with(DonorsProfile.this).load(image).placeholder(R.drawable.default_avatar).into(donorProfile);
-                        Picasso.with(DonorsProfile.this).load(image).networkPolicy(NetworkPolicy.OFFLINE).placeholder(R.drawable.default_avatar).into(donorProfile, new Callback()
+                        Picasso.with(SavedDonorsProfileActivity.this).load(image).placeholder(R.drawable.default_avatar).into(donorProfile);
+                        Picasso.with(SavedDonorsProfileActivity.this).load(image).networkPolicy(NetworkPolicy.OFFLINE).placeholder(R.drawable.default_avatar).into(donorProfile, new Callback()
                         {
                             @Override
                             public void onSuccess()
@@ -103,7 +100,7 @@ public class DonorsProfile extends AppCompatActivity
                             @Override
                             public void onError()
                             {
-                                Picasso.with(DonorsProfile.this).load(image).placeholder(R.drawable.default_avatar).into(donorProfile);
+                                Picasso.with(SavedDonorsProfileActivity.this).load(image).placeholder(R.drawable.default_avatar).into(donorProfile);
                             }
                         });
                     }
@@ -141,59 +138,6 @@ public class DonorsProfile extends AppCompatActivity
             }
         });
 
-        saveDonor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SaveDonorForFutureReference();
-            }
-        });
-    }
-
-    private void SaveDonorForFutureReference() {
-        donorsProfileRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String name = dataSnapshot.child("Name").getValue().toString();
-                String group = dataSnapshot.child("Group").getValue().toString();
-                String dob = dataSnapshot.child("DOB").getValue().toString();
-                String gender = dataSnapshot.child("Gender").getValue().toString();
-                String phone = dataSnapshot.child("Phone").getValue().toString();
-                String email = dataSnapshot.child("Email").getValue().toString();
-                String address = dataSnapshot.child("Address").getValue().toString();
-                String city = dataSnapshot.child("City").getValue().toString();
-
-                HashMap<String, Object> donorMap = new HashMap<String, Object>();
-                donorMap.put("Name",name);
-                donorMap.put("Email",email);
-                donorMap.put("Phone",phone);
-                donorMap.put("Group",group);
-                donorMap.put("DOB",dob);
-                donorMap.put("Gender",gender);
-                donorMap.put("City",city);
-                donorMap.put("Address",address);
-                saveDonorRef.updateChildren(donorMap).addOnCompleteListener(new OnCompleteListener<Void>()
-                {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task)
-                    {
-                        if(task.isSuccessful())
-                        {
-                            Toast.makeText(DonorsProfile.this, "Saved Successfully...", Toast.LENGTH_LONG).show();
-                        }
-                        else
-                        {
-                            String message = task.getException().getMessage();
-                            Toast.makeText(getApplicationContext(), "Error Occurred:" + message, Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
     }
 
     private void SendMessageToDonor() {

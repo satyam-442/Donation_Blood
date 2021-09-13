@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".SavedDonorsProfileActivity"
+            android:exported="true" />
+        <activity
             android:name=".DonateActivity"
             android:exported="true" />
         <activity android:name=".DonorsProfile" />
