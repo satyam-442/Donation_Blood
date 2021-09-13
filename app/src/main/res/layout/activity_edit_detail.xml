@@ -165,6 +165,7 @@
                 android:layout_marginTop="16dp">
 
                 <TextView
+                    android:id="@+id/selectDOBTap"
                     android:layout_marginTop="12dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -218,6 +219,28 @@
                     android:background="@drawable/et_bg"
                     android:inputType="text"/>
 
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:padding="5dp">
+
+                    <RadioButton
+                        android:id="@+id/maleEdit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Male"
+                        android:onClick="onRadioButtonClicked"/>
+
+                    <RadioButton
+                        android:id="@+id/femaleEdit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Female"
+                        android:onClick="onRadioButtonClicked"/>
+
+                </RadioGroup>
             </LinearLayout>
 
             <LinearLayout

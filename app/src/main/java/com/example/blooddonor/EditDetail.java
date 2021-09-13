@@ -1,15 +1,21 @@
 package com.example.blooddonor;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,17 +28,22 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 
 public class EditDetail extends AppCompatActivity
 {
-
+    DatePickerDialog picker;
     Button UpdateInfoBtn;
-    TextView updateName, updateEmail, updatePhone, updateGroup, updateDob, updateGender, updateCity, updateAddress;
+    EditText updateName, updateEmail, updatePhone, updateGroup, updateDob, updateGender, updateCity, updateAddress;
     FirebaseAuth mAuth;
+    TextView selectDOBTap;
     DatabaseReference UserRef;
     String currentUserID;
     ProgressDialog loadingBar;
+
+    int dayVar, monthVar, yearVar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -46,15 +57,16 @@ public class EditDetail extends AppCompatActivity
         UserRef = FirebaseDatabase.getInstance().getReference().child("Donors").child(currentUserID);
         UserRef.keepSynced(true);
 
+        updateName = findViewById(R.id.updateName);
+        updateEmail = findViewById(R.id.updateEmail);
+        updatePhone = findViewById(R.id.updatePhone);
+        updateGroup = findViewById(R.id.updateBlood);
+        updateDob = findViewById(R.id.updateDOB);
+        updateGender = findViewById(R.id.updateGender);
+        updateCity = findViewById(R.id.updateCity);
+        updateAddress = findViewById(R.id.updateAddress);
 
-        updateName = (TextView) findViewById(R.id.updateName);
-        updateEmail = (TextView) findViewById(R.id.updateEmail);
-        updatePhone = (TextView) findViewById(R.id.updatePhone);
-        updateGroup = (TextView) findViewById(R.id.updateBlood);
-        updateDob = (TextView) findViewById(R.id.updateDOB);
-        updateGender = (TextView) findViewById(R.id.updateGender);
-        updateCity = (TextView) findViewById(R.id.updateCity);
-        updateAddress = (TextView) findViewById(R.id.updateAddress);
+        selectDOBTap = findViewById(R.id.selectDOBTap);
 
         UpdateInfoBtn = (Button) findViewById(R.id.setupInfoBtn);
         UpdateInfoBtn.setOnClickListener(new View.OnClickListener() {
@@ -63,6 +75,26 @@ public class EditDetail extends AppCompatActivity
                 UpdateAccountInfo();
             }
         });
+
+        selectDOBTap = findViewById(R.id.selectDOBTap);
+        selectDOBTap.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            final Calendar cldr = Calendar.getInstance();
+            int day = cldr.get(Calendar.DAY_OF_MONTH);
+            int month = cldr.get(Calendar.MONTH);
+            int year = cldr.get(Calendar.YEAR);
+            // date picker dialog
+            picker = new DatePickerDialog(EditDetail.this,
+                    new DatePickerDialog.OnDateSetListener() {
+                        @Override
+                        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                            updateDob.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                        }
+                    }, year, month, day);
+            picker.show();
+        }
+    });
 
         loadingBar = new ProgressDialog(this);
 
@@ -98,7 +130,23 @@ public class EditDetail extends AppCompatActivity
 
             }
         });
+    }
 
+    public void onRadioButtonClicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.maleEdit:
+                if (checked)
+                    updateGender.setText("Male");
+                    break;
+            case R.id.femaleEdit:
+                if (checked)
+                    updateGender.setText("Female");
+                    break;
+        }
     }
 
     private void UpdateAccountInfo() {

@@ -1,18 +1,25 @@
 package com.example.blooddonor;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,19 +28,23 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.DateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.regex.Pattern;
 
 public class SetupActivity extends AppCompatActivity
 {
     Button SaveInfoBtn;
-    TextView setupName, setupEmail, setupPhone, setupGroup, setupDob, setupGender, setupCity, setupAddress, setupPassword;
+    EditText setupName, setupEmail, setupPhone, setupGroup, setupDob, setupGender, setupCity, setupAddress, setupPassword;
+    TextView selectDOBTap;
     FirebaseAuth mAuth;
     DatabaseReference UserRef;
     String currentUserID;
     ProgressDialog loadingBar;
     RadioGroup genderGroup;
     RadioButton radioMale, radioFemale;
+    int dayVar, monthVar, yearVar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -41,20 +52,43 @@ public class SetupActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup);
 
-        setupName = (TextView) findViewById(R.id.setupName);
-        setupEmail = (TextView) findViewById(R.id.setupEmail);
-        setupPhone = (TextView) findViewById(R.id.setupPhone);
-        setupGroup = (TextView) findViewById(R.id.setupBlood);
-        setupDob = (TextView) findViewById(R.id.setupDOB);
-        setupGender = (TextView) findViewById(R.id.setupGender);
-        setupCity = (TextView) findViewById(R.id.setupCity);
-        setupAddress = (TextView) findViewById(R.id.setupAddress);
-        setupPassword = (TextView) findViewById(R.id.setupPassword);
+        setupName = findViewById(R.id.setupName);
+        setupEmail = findViewById(R.id.setupEmail);
+        setupPhone = findViewById(R.id.setupPhone);
+        setupGroup = findViewById(R.id.setupBlood);
+        setupDob = findViewById(R.id.setupDOB);
+        setupGender = findViewById(R.id.setupGender);
+        setupCity = findViewById(R.id.setupCity);
+        setupAddress = findViewById(R.id.setupAddress);
+        setupPassword = findViewById(R.id.setupPassword);
         SaveInfoBtn = (Button) findViewById(R.id.setupInfoBtn);
         SaveInfoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SaveAccountInfo();
+            }
+        });
+
+        selectDOBTap = findViewById(R.id.tvDOB);
+        selectDOBTap.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        getApplicationContext(),
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                                Calendar cal = Calendar.getInstance();
+                                dayVar = dayOfMonth;
+                                monthVar = month;
+                                yearVar = year;
+                                String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(cal.getTime());
+                                android.text.format.DateFormat df = new android.text.format.DateFormat();
+                                setupDob.setText(df.format("MM-dd-yyyy", cal));
+                            }
+                        },2000,12,0
+                );
             }
         });
 
@@ -165,5 +199,22 @@ public class SetupActivity extends AppCompatActivity
         mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(mainIntent);
         finish();
+    }
+
+    public void onRadioButtonClicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.radioMale:
+                if (checked)
+                    setupGender.setText("Male");
+                break;
+            case R.id.radioFemale:
+                if (checked)
+                    setupGender.setText("Female");
+                break;
+        }
     }
 }

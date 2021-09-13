@@ -165,6 +165,7 @@
                 android:layout_marginTop="16dp">
 
                 <TextView
+                    android:id="@+id/tvDOB"
                     android:layout_marginTop="12dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -235,7 +236,8 @@
                         android:text="Male"
                         android:textSize="17sp"
                         android:textColor="@color/red"
-                        android:layout_marginEnd="50dp"/>
+                        android:layout_marginEnd="50dp"
+                        android:onClick="onRadioButtonClicked"/>
 
                     <RadioButton
                         android:id="@+id/radioFemale"
@@ -243,7 +245,8 @@
                         android:layout_height="wrap_content"
                         android:text="Female"
                         android:textSize="17sp"
-                        android:textColor="@color/red"/>
+                        android:textColor="@color/red"
+                        android:onClick="onRadioButtonClicked"/>
 
                 </RadioGroup>
 
