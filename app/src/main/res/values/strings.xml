@@ -2,4 +2,17 @@
     <string name="app_name">Blood Donor</string>
     <string name="drawer_open">Drawer Open</string>
     <string name="drawer_close">Drawer Close</string>
+
+    <string-array name="bloods_array">
+        <item>-group-</item>
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+        <item>O+</item>
+        <item>0-</item>
+    </string-array>
+
 </resources>

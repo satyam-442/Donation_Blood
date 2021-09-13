@@ -156,6 +156,11 @@
                     android:paddingRight="15dp"
                     android:background="@drawable/et_bg"/>
 
+                <Spinner
+                    android:id="@+id/bloods_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
             </LinearLayout>
 
             <LinearLayout

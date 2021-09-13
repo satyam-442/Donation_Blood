@@ -13,11 +13,14 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -33,24 +36,38 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.regex.Pattern;
 
-public class SetupActivity extends AppCompatActivity
-{
+public class SetupActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     Button SaveInfoBtn;
     EditText setupName, setupEmail, setupPhone, setupGroup, setupDob, setupGender, setupCity, setupAddress, setupPassword;
     TextView selectDOBTap;
     FirebaseAuth mAuth;
-    DatabaseReference UserRef;
+    DatabaseReference UserRef,GroupRef;
     String currentUserID;
     ProgressDialog loadingBar;
     RadioGroup genderGroup;
     RadioButton radioMale, radioFemale;
     int dayVar, monthVar, yearVar;
+    Spinner spinner;
+    DatePickerDialog picker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup);
+
+        //SPINNER USE FOR BLOOD GROUP
+        spinner = findViewById(R.id.bloods_spinner);
+
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.bloods_array, android.R.layout.simple_spinner_item);
+
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
 
         setupName = findViewById(R.id.setupName);
         setupEmail = findViewById(R.id.setupEmail);
@@ -71,30 +88,28 @@ public class SetupActivity extends AppCompatActivity
 
         selectDOBTap = findViewById(R.id.tvDOB);
         selectDOBTap.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        getApplicationContext(),
+                final Calendar cldr = Calendar.getInstance();
+                int day = cldr.get(Calendar.DAY_OF_MONTH);
+                int month = cldr.get(Calendar.MONTH);
+                int year = cldr.get(Calendar.YEAR);
+                // date picker dialog
+                picker = new DatePickerDialog(SetupActivity.this,
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
-                            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                                Calendar cal = Calendar.getInstance();
-                                dayVar = dayOfMonth;
-                                monthVar = month;
-                                yearVar = year;
-                                String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(cal.getTime());
-                                android.text.format.DateFormat df = new android.text.format.DateFormat();
-                                setupDob.setText(df.format("MM-dd-yyyy", cal));
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                setupDob.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
                             }
-                        },2000,12,0
-                );
+                        }, year, month, day);
+                picker.show();
             }
         });
 
         mAuth = FirebaseAuth.getInstance();
         currentUserID = mAuth.getCurrentUser().getUid();
         UserRef = FirebaseDatabase.getInstance().getReference().child("Donors").child(currentUserID);
+        GroupRef = FirebaseDatabase.getInstance().getReference().child("BloodGroups");
 
         loadingBar = new ProgressDialog(this);
     }
@@ -178,9 +193,26 @@ public class SetupActivity extends AppCompatActivity
                 {
                     if(task.isSuccessful())
                     {
-                        SendUserToMainActivity();
-                        Toast.makeText(SetupActivity.this, "Your Account Created Successfully...", Toast.LENGTH_LONG).show();
-                        loadingBar.dismiss();
+                        HashMap<String, Object> donorMapNew = new HashMap<String, Object>();
+                        donorMapNew.put("Name",name);
+                        donorMapNew.put("Email",email);
+                        donorMapNew.put("Phone",phone);
+                        donorMapNew.put("Group",group);
+                        donorMapNew.put("DOB",dob);
+                        donorMapNew.put("Gender",gender);
+                        donorMapNew.put("City",city);
+                        donorMapNew.put("Address",addresss);
+                        donorMapNew.put("Password",password);
+                        donorMapNew.put("image","default");
+                        donorMapNew.put("fuid",currentUserID);
+                        GroupRef.child(group).child(currentUserID).updateChildren(donorMapNew).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                SendUserToMainActivity();
+                                Toast.makeText(SetupActivity.this, "Your Account Created Successfully...", Toast.LENGTH_LONG).show();
+                                loadingBar.dismiss();
+                            }
+                        });
                     }
                     else
                     {
@@ -216,5 +248,16 @@ public class SetupActivity extends AppCompatActivity
                     setupGender.setText("Female");
                 break;
         }
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String itemSpinner = parent.getItemAtPosition(position).toString();
+        setupGroup.setText(itemSpinner);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }
