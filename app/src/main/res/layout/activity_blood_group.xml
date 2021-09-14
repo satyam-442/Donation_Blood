@@ -64,7 +64,8 @@
                         android:id="@+id/apos"
                         android:layout_width="130dp"
                         android:layout_height="140dp"
-                        android:src="@drawable/blooddrop" />
+                        android:src="@drawable/blooddrop"
+                        android:onClick="aPosBlood"/>
 
                     <TextView
                         android:id="@+id/apostv"
@@ -74,7 +75,8 @@
                         android:text="A+"
                         android:textColor="@color/red"
                         android:textSize="30sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:onClick="aPosBlood"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -92,7 +94,8 @@
                         android:id="@+id/anegative"
                         android:layout_width="130dp"
                         android:layout_height="140dp"
-                        android:src="@drawable/blooddrop"/>
+                        android:src="@drawable/blooddrop"
+                        android:onClick="aNegBlood"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -100,7 +103,8 @@
                         android:layout_marginTop="10dp"
                         android:text="A-"
                         android:textColor="@color/red"
-                        android:textSize="30sp"/>
+                        android:textSize="30sp"
+                        android:onClick="aNegBlood"/>
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -130,7 +134,8 @@
                         android:id="@+id/bpositive"
                         android:layout_width="130dp"
                         android:layout_height="140dp"
-                        android:src="@drawable/blooddrop" />
+                        android:src="@drawable/blooddrop"
+                        android:onClick="bPosBlood"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -139,7 +144,8 @@
                         android:text="B+"
                         android:textColor="@color/red"
                         android:textSize="30sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:onClick="bPosBlood"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -157,7 +163,8 @@
                         android:id="@+id/bnegative"
                         android:layout_width="130dp"
                         android:layout_height="140dp"
-                        android:src="@drawable/blooddrop"/>
+                        android:src="@drawable/blooddrop"
+                        android:onClick="bNegBlood"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -165,7 +172,8 @@
                         android:layout_marginTop="10dp"
                         android:text="B-"
                         android:textColor="@color/red"
-                        android:textSize="30sp"/>
+                        android:textSize="30sp"
+                        android:onClick="bNegBlood"/>
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -195,7 +203,8 @@
                         android:id="@+id/abpos"
                         android:layout_width="130dp"
                         android:layout_height="140dp"
-                        android:src="@drawable/blooddrop" />
+                        android:src="@drawable/blooddrop"
+                        android:onClick="abPosBlood"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -204,7 +213,8 @@
                         android:text="AB+"
                         android:textColor="@color/red"
                         android:textSize="30sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:onClick="abPosBlood"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -223,7 +233,8 @@
                         android:id="@+id/abnegative"
                         android:layout_width="130dp"
                         android:layout_height="140dp"
-                        android:src="@drawable/blooddrop"/>
+                        android:src="@drawable/blooddrop"
+                        android:onClick="abNegBlood"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -231,7 +242,8 @@
                         android:layout_marginTop="10dp"
                         android:text="AB-"
                         android:textColor="@color/red"
-                        android:textSize="30sp"/>
+                        android:textSize="30sp"
+                        android:onClick="abNegBlood"/>
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -260,7 +272,8 @@
                         android:id="@+id/opos"
                         android:layout_width="130dp"
                         android:layout_height="140dp"
-                        android:src="@drawable/blooddrop" />
+                        android:src="@drawable/blooddrop"
+                        android:onClick="oPosBlood"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -269,7 +282,8 @@
                         android:text="O+"
                         android:textColor="@color/red"
                         android:textSize="30sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:onClick="oPosBlood"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -288,7 +302,8 @@
                         android:id="@+id/onegative"
                         android:layout_width="130dp"
                         android:layout_height="140dp"
-                        android:src="@drawable/blooddrop"/>
+                        android:src="@drawable/blooddrop"
+                        android:onClick="oNegBlood"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -296,11 +311,10 @@
                         android:layout_marginTop="10dp"
                         android:text="O-"
                         android:textColor="@color/red"
-                        android:textSize="30sp"/>
-
+                        android:textSize="30sp"
+                        android:onClick="oNegBlood"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>
-
     </LinearLayout>
 </ScrollView>

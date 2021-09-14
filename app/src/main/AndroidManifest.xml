@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".GroupWiseBlood"
+            android:exported="true" />
+        <activity
             android:name=".SavedDonorsProfileActivity"
             android:exported="true" />
         <activity
