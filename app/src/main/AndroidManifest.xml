@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".admin.AdminDonorProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.AdminDonorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.AdminMainActivity"
+            android:exported="false" />
+        <activity
             android:name=".GroupWiseBlood"
             android:exported="true" />
         <activity

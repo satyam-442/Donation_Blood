@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/SATYAM/FlutterProjectLeraning/Donation_Blood/app/src/main/res/layout/activity_admin_donor.xml" value="0.22552083333333334" />
+        <entry key="..\:/SATYAM/FlutterProjectLeraning/Donation_Blood/app/src/main/res/layout/activity_admin_donor_profile.xml" value="0.22552083333333334" />
+        <entry key="..\:/SATYAM/FlutterProjectLeraning/Donation_Blood/app/src/main/res/layout/activity_admin_main.xml" value="0.22552083333333334" />
         <entry key="..\:/SATYAM/FlutterProjectLeraning/Donation_Blood/app/src/main/res/layout/activity_blood_group.xml" value="0.2" />
         <entry key="..\:/SATYAM/FlutterProjectLeraning/Donation_Blood/app/src/main/res/layout/activity_donate.xml" value="0.2" />
         <entry key="..\:/SATYAM/FlutterProjectLeraning/Donation_Blood/app/src/main/res/layout/activity_donor.xml" value="0.22447916666666667" />
@@ -10,6 +13,7 @@
         <entry key="..\:/SATYAM/FlutterProjectLeraning/Donation_Blood/app/src/main/res/layout/activity_edit_detail.xml" value="0.22447916666666667" />
         <entry key="..\:/SATYAM/FlutterProjectLeraning/Donation_Blood/app/src/main/res/layout/activity_forgot_password.xml" value="0.22447916666666667" />
         <entry key="..\:/SATYAM/FlutterProjectLeraning/Donation_Blood/app/src/main/res/layout/activity_group_wise_blood.xml" value="0.22447916666666667" />
+        <entry key="..\:/SATYAM/FlutterProjectLeraning/Donation_Blood/app/src/main/res/layout/activity_login.xml" value="0.22552083333333334" />
         <entry key="..\:/SATYAM/FlutterProjectLeraning/Donation_Blood/app/src/main/res/layout/activity_main.xml" value="0.18981481481481483" />
         <entry key="..\:/SATYAM/FlutterProjectLeraning/Donation_Blood/app/src/main/res/layout/activity_saved_donor.xml" value="0.17037037037037037" />
         <entry key="..\:/SATYAM/FlutterProjectLeraning/Donation_Blood/app/src/main/res/layout/activity_saved_donors_profile.xml" value="0.22447916666666667" />

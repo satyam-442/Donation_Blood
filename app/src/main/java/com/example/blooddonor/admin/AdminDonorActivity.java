@@ -1,4 +1,4 @@
-package com.example.blooddonor;
+package com.example.blooddonor.admin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +18,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.blooddonor.Donor;
+import com.example.blooddonor.DonorActivity;
+import com.example.blooddonor.DonorsProfile;
+import com.example.blooddonor.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,30 +33,20 @@ import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class DonorActivity extends AppCompatActivity
-{
+public class AdminDonorActivity extends AppCompatActivity {
 
     MaterialSearchView searchView;
     FirebaseAuth mAuth;
     DatabaseReference DonorsRef;
-    String currentUserId;
     RecyclerView donorList;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_donor);
-
+        setContentView(R.layout.activity_admin_donor);
 
         mAuth = FirebaseAuth.getInstance();
         DonorsRef = FirebaseDatabase.getInstance().getReference().child("Donors");
-
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Donor");
-        toolbar.setTitleTextColor(Color.parseColor("#ffffff"));
 
         //RECYCLER VIEW FOR QUERY UPDATE(OPEN)
 
@@ -63,10 +57,8 @@ public class DonorActivity extends AppCompatActivity
         linearLayoutManager.setStackFromEnd(true);
         donorList.setLayoutManager(linearLayoutManager);
 
-
         //RECYCLER VIEW FOR DONORS UPDATE(CLOSE)
         startListen();
-
     }
 
     @Override
@@ -86,7 +78,6 @@ public class DonorActivity extends AppCompatActivity
             protected void onBindViewHolder(@NonNull DonorsViewHolder holder, @SuppressLint("RecyclerView") final int position, @NonNull Donor model)
             {
                 //final String PostKey = getRef(position).getKey();
-
                 holder.setAddres(model.getAddres());
                 holder.setNamee(model.getNamee());
                 holder.setGenderr(model.getGenderr());
@@ -99,7 +90,7 @@ public class DonorActivity extends AppCompatActivity
                     public void onClick(View v)
                     {
                         String visit_user_id = getRef(position).getKey();
-                        Intent teacherProfileIntent = new Intent(DonorActivity.this,DonorsProfile.class);
+                        Intent teacherProfileIntent = new Intent(AdminDonorActivity.this, AdminDonorProfileActivity.class);
                         teacherProfileIntent.putExtra("visit_user_id",visit_user_id);
                         startActivity(teacherProfileIntent);
                     }

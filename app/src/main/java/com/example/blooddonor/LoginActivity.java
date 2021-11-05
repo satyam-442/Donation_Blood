@@ -16,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.blooddonor.admin.AdminMainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -24,7 +25,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity
 {
-    Button loginBtn, regisBtnLink;
+    Button loginBtn, regisBtnLink, loginBtnAdmin;
     RelativeLayout relay1,relay2;
     TextView slogan;
     EditText logEmail, logPass;
@@ -70,6 +71,14 @@ public class LoginActivity extends AppCompatActivity
 
         mAuth = FirebaseAuth.getInstance();
 
+        loginBtnAdmin = (Button) findViewById(R.id.loginBtnAdmin);
+        loginBtnAdmin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AllowAdminToLogin();
+            }
+        });
+
         regisBtnLink = (Button) findViewById(R.id.regisBtnLink);
         regisBtnLink.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,6 +86,31 @@ public class LoginActivity extends AppCompatActivity
                 SendToRegister();
             }
         });
+    }
+
+    private void AllowAdminToLogin() {
+        final String email = logEmail.getText().toString();
+        final String password = logPass.getText().toString();
+        if (TextUtils.isEmpty(email))
+        {
+            Toast.makeText(this, "E-mail is empty...", Toast.LENGTH_SHORT).show();
+        }
+        else if(TextUtils.isEmpty(password))
+        {
+            Toast.makeText(this, "Password is empty...", Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            loadingBar.setTitle("please wait...");
+            loadingBar.show();
+            loadingBar.setCanceledOnTouchOutside(false);
+            if (email.equals("admin") && password.equals("12345")){
+                Intent main = new Intent(this, AdminMainActivity.class);
+                main.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(main);
+                finish();
+            }
+        }
     }
 
     @Override

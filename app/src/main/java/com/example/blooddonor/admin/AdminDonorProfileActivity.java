@@ -1,4 +1,4 @@
-package com.example.blooddonor;
+package com.example.blooddonor.admin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.blooddonor.DonorsProfile;
+import com.example.blooddonor.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,28 +29,26 @@ import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class DonorsProfile extends AppCompatActivity
-{
+public class AdminDonorProfileActivity extends AppCompatActivity {
+
     private TextView donorName,  donorGroup, donorDob, donorGender, donorPhone, donorEmail, donorAddress;
     private CircleImageView donorProfile;
     private Button requestByMail, saveDonor, requestByMessage, callDonor;
-    private DatabaseReference donorsProfileRef, saveDonorRef;
+    private DatabaseReference donorsProfileRef;
     private FirebaseAuth mAuth;
     String currentUserId, senderUserId, recieverUserId, CURRENT_STATE, saveCurrentDate;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_donors_profile);
+        setContentView(R.layout.activity_admin_donor_profile);
 
         mAuth = FirebaseAuth.getInstance();
 
         currentUserId = getIntent().getExtras().get("visit_user_id").toString();
-        senderUserId = mAuth.getCurrentUser().getUid();
         donorsProfileRef = FirebaseDatabase.getInstance().getReference().child("Donors").child(currentUserId);
 
-        saveDonorRef = FirebaseDatabase.getInstance().getReference().child("SavedDonors").child(senderUserId).child(currentUserId);
+        //saveDonorRef = FirebaseDatabase.getInstance().getReference().child("SavedDonors").child(senderUserId).child(currentUserId);
 
         donorName = (TextView) findViewById(R.id.donorProfile_username);
         donorGroup = (TextView) findViewById(R.id.donorProfile_group);
@@ -60,7 +60,7 @@ public class DonorsProfile extends AppCompatActivity
         donorProfile = (CircleImageView) findViewById(R.id.donorProfile_image);
 
         requestByMail = (Button) findViewById(R.id.requestByMail);
-        saveDonor = (Button) findViewById(R.id.saveDonor);
+        //saveDonor = (Button) findViewById(R.id.saveDonor);
         callDonor = (Button) findViewById(R.id.callDonor);
         requestByMessage = (Button) findViewById(R.id.messageDonor);
 
@@ -92,8 +92,8 @@ public class DonorsProfile extends AppCompatActivity
                     final String image = dataSnapshot.child("image").getValue().toString();
                     if(!image.equals("default"))
                     {
-                        Picasso.with(DonorsProfile.this).load(image).placeholder(R.drawable.default_avatar).into(donorProfile);
-                        Picasso.with(DonorsProfile.this).load(image).networkPolicy(NetworkPolicy.OFFLINE).placeholder(R.drawable.default_avatar).into(donorProfile, new Callback()
+                        Picasso.with(AdminDonorProfileActivity.this).load(image).placeholder(R.drawable.default_avatar).into(donorProfile);
+                        Picasso.with(AdminDonorProfileActivity.this).load(image).networkPolicy(NetworkPolicy.OFFLINE).placeholder(R.drawable.default_avatar).into(donorProfile, new Callback()
                         {
                             @Override
                             public void onSuccess()
@@ -102,7 +102,7 @@ public class DonorsProfile extends AppCompatActivity
                             @Override
                             public void onError()
                             {
-                                Picasso.with(DonorsProfile.this).load(image).placeholder(R.drawable.default_avatar).into(donorProfile);
+                                Picasso.with(AdminDonorProfileActivity.this).load(image).placeholder(R.drawable.default_avatar).into(donorProfile);
                             }
                         });
                     }
@@ -140,15 +140,15 @@ public class DonorsProfile extends AppCompatActivity
             }
         });
 
-        saveDonor.setOnClickListener(new View.OnClickListener() {
+        /*saveDonor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SaveDonorForFutureReference();
             }
-        });
+        });*/
     }
 
-    private void SaveDonorForFutureReference() {
+    /*private void SaveDonorForFutureReference() {
         donorsProfileRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -170,14 +170,14 @@ public class DonorsProfile extends AppCompatActivity
                 donorMap.put("Gender",gender);
                 donorMap.put("City",city);
                 donorMap.put("Address",address);
-                saveDonorRef.updateChildren(donorMap).addOnCompleteListener(new OnCompleteListener<Void>()
+                *//*saveDonorRef.updateChildren(donorMap).addOnCompleteListener(new OnCompleteListener<Void>()
                 {
                     @Override
                     public void onComplete(@NonNull Task<Void> task)
                     {
                         if(task.isSuccessful())
                         {
-                            Toast.makeText(DonorsProfile.this, "Saved Successfully...", Toast.LENGTH_LONG).show();
+                            Toast.makeText(AdminDonorProfileActivity.this, "Saved Successfully...", Toast.LENGTH_LONG).show();
                         }
                         else
                         {
@@ -185,7 +185,7 @@ public class DonorsProfile extends AppCompatActivity
                             Toast.makeText(getApplicationContext(), "Error Occurred:" + message, Toast.LENGTH_SHORT).show();
                         }
                     }
-                });
+                });*//*
             }
 
             @Override
@@ -193,7 +193,7 @@ public class DonorsProfile extends AppCompatActivity
 
             }
         });
-    }
+    }*/
 
     private void SendMessageToDonor() {
         donorsProfileRef.addValueEventListener(new ValueEventListener() {
