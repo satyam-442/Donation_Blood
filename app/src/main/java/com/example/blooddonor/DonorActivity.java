@@ -165,12 +165,4 @@ public class DonorActivity extends AppCompatActivity
         }
 
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.search_menu,menu);
-        MenuItem item = menu.findItem(R.id.action_search);
-        return true;
-    }
-
 }
